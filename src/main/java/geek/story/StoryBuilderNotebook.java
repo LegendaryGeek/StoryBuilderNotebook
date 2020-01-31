@@ -32,6 +32,23 @@ public class StoryBuilderNotebook {
 	private static boolean debugMode = false;
 
 	public static void main(String[] args) {
+
+		log.info("Month: {}", Calendar.getInstance().get(Calendar.MONTH));
+		log.info("Day of Month: {}", Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+		log.info("Day of Week: {}", Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
+		log.info("Day of Week in Month: {}", Calendar.getInstance().get(Calendar.DAY_OF_WEEK_IN_MONTH));
+		log.info("Day of Year: {}", Calendar.getInstance().get(Calendar.DAY_OF_YEAR));
+		log.info("Year: {}", Calendar.getInstance().get(Calendar.YEAR));
+		log.info("Week of Month: {}", Calendar.getInstance().get(Calendar.WEEK_OF_MONTH));
+		log.info("Week of Year: {}", Calendar.getInstance().get(Calendar.WEEK_OF_YEAR));
+		log.info("Hour: {}", Calendar.getInstance().get(Calendar.HOUR));
+		log.info("Hour of Day: {}", Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
+		log.info("Minute: {}", Calendar.getInstance().get(Calendar.MINUTE));
+
+		log.info(SEPERATOR);
+		log.info("Date Format: {}",
+				DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(Date.from(Instant.now())));
+
 		Notebook book = new Notebook();
 		ElementBase base = new ElementBase();
 		base.setBook(book);
