@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import geek.story.StoryBuilderNotebook;
+import geek.story.window.NotebookFrame;
 
 public class MainMenueButton extends JButton implements ActionListener {
 	/**
@@ -75,9 +76,10 @@ public class MainMenueButton extends JButton implements ActionListener {
 			case "Notebook Drop Down list":
 				getMainMenuePanel().remove(comp);
 				NotebookComboBox boxy = new NotebookComboBox();
-				getMainMenuePanel().add(boxy);
+				getMainMenuePanel().add(boxy, NotebookFrame.comboBoxIndex);
 				boxy.setLocation(200, 20);
 				boxy.setSize(400, 40);
+
 				break;
 			case "Exit Button":
 				comp.setLocation(200, 700);

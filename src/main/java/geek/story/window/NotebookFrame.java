@@ -35,11 +35,20 @@ public class NotebookFrame extends JFrame {
 
 	// buttons, levers, and switches oh my!
 	JButton newBookButton = new JButton();
+	// Button Indexes
+	public static final int exitButtonIndex = 0;
+	public static final int comboBoxIndex = 1;
+	public static final int optionsButtonIndex = 2;
+	public static final int newBookButtonIndex = 3;
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public NotebookComboBox notebookComboBox = new NotebookComboBox();
+	public ExitButton exitButton = new ExitButton();
+	public OptionsMenueButton optionsMenueButton = new OptionsMenueButton();
+	public NewBookButton newBookButton = new NewBookButton();
 
 	public NotebookFrame() {
 		this.setName(StoryBuilderNotebook.appName);
@@ -95,10 +104,10 @@ public class NotebookFrame extends JFrame {
 		log.info("Initializing Window Panes");
 
 		mainMenuePanel.setBackground(Color.decode("#00137F"));
-		mainMenuePanel.add(new ExitButton());
-		mainMenuePanel.add(new NotebookComboBox());
-		mainMenuePanel.add(new OptionsMenueButton());
-		mainMenuePanel.add(new NewBookButton());
+		mainMenuePanel.add(exitButton, 0);
+		mainMenuePanel.add(notebookComboBox, 1);
+		mainMenuePanel.add(optionsMenueButton, 2);
+		mainMenuePanel.add(newBookButton, 3);
 		Component[] comps = getMainMenuePanel().getComponents();
 		Arrays.stream(comps).forEach(comp -> {
 			log.info(StoryBuilderNotebook.SEPERATOR);
@@ -111,7 +120,7 @@ public class NotebookFrame extends JFrame {
 				break;
 			case "Notebook Drop Down list":
 				getMainMenuePanel().remove(comp);
-				NotebookComboBox boxy = new NotebookComboBox();
+				NotebookComboBox boxy = notebookComboBox;
 				getMainMenuePanel().add(boxy);
 				boxy.setLocation(200, 20);
 				boxy.setSize(400, 40);
