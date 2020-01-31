@@ -1,6 +1,12 @@
 package geek.story;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +20,7 @@ import geek.story.elements.Item;
 import geek.story.elements.Technology;
 import geek.story.elements.items.TechItem;
 import geek.story.elements.items.Weapon;
+import geek.story.file.FileUtilities;
 import geek.story.window.NotebookFrame;
 
 /**
@@ -30,6 +37,7 @@ public class StoryBuilderNotebook {
 	public static ArrayList<Notebook> books = new ArrayList<>();
 	static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	private static boolean debugMode = false;
+	private static Path appPath = Paths.get("C:\\LegendaryGeek\\CharacterStoryNotebook");
 
 	public static void main(String[] args) {
 
@@ -54,6 +62,7 @@ public class StoryBuilderNotebook {
 		base.setBook(book);
 
 		GSCharacter kenz = new GSCharacter();
+
 		Weapon sword = new Weapon();
 		Item statTest = new Item();
 		Technology tech = new Technology();
