@@ -5,7 +5,6 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.util.Arrays;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -32,9 +31,8 @@ public class NotebookFrame extends JFrame {
 	// panes
 	private static JPanel mainMenuePanel = new JPanel(flowLayout);
 	private static JPanel optionsPanel = new JPanel(flowLayout);
+	private EditiorPane editior;
 
-	// buttons, levers, and switches oh my!
-	JButton newBookButton = new JButton();
 	// Button Indexes
 	public static final int exitButtonIndex = 0;
 	public static final int comboBoxIndex = 1;
@@ -152,6 +150,8 @@ public class NotebookFrame extends JFrame {
 		optionsPanel.setBackground(Color.decode("#00137F"));
 		optionsPanel.add(new MainMenueButton());
 
+//		editiorPane.
+
 		log.info("Window Panes Initalized");
 
 		log.info(StoryBuilderNotebook.SEPERATOR);
@@ -183,6 +183,20 @@ public class NotebookFrame extends JFrame {
 	 */
 	public static JPanel getOptionsPanel() {
 		return optionsPanel;
+	}
+
+	/**
+	 * @return the editior
+	 */
+	public EditiorPane getEditior() {
+		return editior;
+	}
+
+	/**
+	 * @param editior the editior to set
+	 */
+	public void setEditior(EditiorPane editior) {
+		this.editior = editior;
 	}
 
 }
