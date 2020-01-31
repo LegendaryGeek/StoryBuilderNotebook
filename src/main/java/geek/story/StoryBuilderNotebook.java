@@ -207,4 +207,18 @@ public class StoryBuilderNotebook {
 		StoryBuilderNotebook.debugMode = debugMode;
 	}
 
+	/**
+	 * @return the appPath
+	 */
+	public static Path getAppPath() {
+		return appPath;
+	}
+
+	/**
+	 * @param appPath the appPath to set
+	 */
+	public static void setAppPath(Path appPath) {
+		StoryBuilderNotebook.appPath = appPath;
+	}
+
 }
