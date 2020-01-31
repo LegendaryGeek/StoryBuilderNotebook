@@ -1,11 +1,15 @@
 package geek.story.window.buttons;
 
+import static geek.story.window.NotebookFrame.getMainMenuePanel;
+
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -97,7 +101,40 @@ public class NewBookButton extends JButton implements ActionListener {
 
 		NotebookComboBox box = StoryBuilderNotebook.getFrame().notebookComboBox;
 		box.addItem(book);
+		Component[] comps = getMainMenuePanel().getComponents();
+		Arrays.stream(comps).forEach(comp -> {
+			log.info(StoryBuilderNotebook.SEPERATOR);
+			log.info("Initializing Main Menue");
+			log.info(StoryBuilderNotebook.SEPERATOR);
 
+			switch (comp.getName()) {
+
+			case "Main Menue Button":
+				break;
+			case "Notebook Drop Down list":
+				getMainMenuePanel().remove(comp);
+				NotebookComboBox boxy = StoryBuilderNotebook.getFrame().notebookComboBox;
+				getMainMenuePanel().add(boxy);
+				boxy.setLocation(200, 20);
+				boxy.setSize(400, 40);
+				break;
+			case "Exit Button":
+				comp.setLocation(200, 700);
+				comp.setSize(400, 40);
+				break;
+			case "Options Menue Button":
+				comp.setLocation(200, 75);
+				comp.setSize(400, 40);
+				break;
+			case "New Book Button":
+				comp.setLocation(200, 130);
+				comp.setSize(400, 40);
+				break;
+			default:
+				log.info("{} was passed but is not a default component. cannot set its location.", comp.getName());
+				break;
+			}
+		});
 	}
 
 }
