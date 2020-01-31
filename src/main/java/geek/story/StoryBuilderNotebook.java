@@ -140,6 +140,13 @@ public class StoryBuilderNotebook {
 
 		});
 
+		FileUtilities.writeGzipExport();
+		FileUtilities.writeGzipExport(book);
+		FileUtilities.writeGzipExport(books.toArray(new Notebook[0]));
+		FileUtilities.writezipExport();
+		FileUtilities.writezipExport(book);
+		FileUtilities.writezipExport(books.toArray(new Notebook[0]));
+
 //		log.info("Notebook");
 //		log.info(gson.toJson(book));
 
