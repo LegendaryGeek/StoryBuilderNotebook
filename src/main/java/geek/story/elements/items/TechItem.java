@@ -9,6 +9,7 @@ public class TechItem extends Item implements ITechnology {
 	Technology tech;
 
 	public TechItem() {
+		this.setType("Device");
 	}
 
 	@Override

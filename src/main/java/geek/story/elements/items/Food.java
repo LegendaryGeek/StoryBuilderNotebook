@@ -8,6 +8,7 @@ public class Food extends Item {
 	String healthRestore;
 
 	private Food() {
+		this.setType("Food");
 	}
 
 	public String getHungerRestore() {

@@ -11,6 +11,7 @@ public class Weapon extends Item {
 	String weaponClass;
 
 	public Weapon() {
+		this.setType("Weapon");
 	}
 
 	public int getDamage() {
