@@ -5,15 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -60,6 +58,7 @@ public class NewBookButton extends JButton implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
+		Notebook book;
 		log.info(event.getActionCommand());
 
 		String bookName = (String) JOptionPane.showInputDialog(StoryBuilderNotebook.getFrame(),
@@ -67,49 +66,38 @@ public class NewBookButton extends JButton implements ActionListener {
 				"The kingdoms anew");
 		log.info("Creating a new Notebook with a name of \"{}\"", bookName);
 
-		Path appPath = Paths.get("C:\\LegendaryGeek\\CharacterStoryNotebook");
-		Path filo2 = Paths.get(appPath.toString() + "\\" + bookName.replace(" ", "-") + ".json");
-		if (!appPath.toFile().exists()) {
-			appPath.toFile().mkdirs();
+		if (!StoryBuilderNotebook.getAppPath().toFile().exists()) {
+			StoryBuilderNotebook.getAppPath().toFile().mkdirs();
 			try {
-				Files.createDirectories(appPath);
+				Files.createDirectories(StoryBuilderNotebook.getAppPath());
 			} catch (IOException e) {
-				e.printStackTrace();
+				log.catching(e);
 			}
 		}
-		if (filo2.toFile().exists()) {
+		ArrayList<String> bookNameList = new ArrayList<>();
+		StoryBuilderNotebook.books.forEach(action -> bookNameList.add(action.getName().toLowerCase()));
+		if (bookNameList.contains(bookName.toLowerCase())) {
 			String bookExistsMessage = "\"" + bookName + "\" alerady exists as a Notebook. Overwrite?";
 			boolean overwrite;
 			int n = JOptionPane.showConfirmDialog(StoryBuilderNotebook.getFrame(), bookExistsMessage,
 					"Notebook alerady exists", JOptionPane.YES_NO_OPTION);
 			if (n == YES) {
+				book = new Notebook();
+				book.setName(bookName);
 				overwrite = true;
-				try {
-					Files.delete(filo2);
-					Files.createFile(filo2);
-				} catch (IOException e) {
-					log.catching(e);
-				}
 			} else {
 				overwrite = false;
+				return;
 			}
 			log.info("should overwrite existing file: {}", overwrite);
 		} else {
-			try {
-				Files.createFile(filo2);
-			} catch (IOException e) {
-				log.catching(e);
-			}
-		}
-		Notebook book = new Notebook();
-		book.setName(bookName);
-		try {
-			FileUtils.writeStringToFile(filo2.toFile(), gson.toJson(book));
-		} catch (IOException e) {
-			log.catching(e);
+			book = new Notebook();
+			book.setName(bookName);
 		}
 
-		StoryBuilderNotebook.books.add(book);
+		NotebookComboBox box = StoryBuilderNotebook.getFrame().notebookComboBox;
+		box.addItem(book);
+
 	}
 
 }
