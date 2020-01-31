@@ -64,7 +64,7 @@ public class StoryBuilderNotebook {
 		itemNotInInventory.setBook(book);
 		itemNotInInventory.setTech(new Technology());
 
-		book.setName("Default Book");
+		book.setName("Sample Book");
 		Notebook book2 = new Notebook();
 		book2.setName("Blank Book");
 
