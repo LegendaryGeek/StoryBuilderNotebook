@@ -28,7 +28,7 @@ public class StoryBuilderNotebook {
 	public static final String SEPERATOR = "-------------------------";
 	private static NotebookFrame frame;
 	public static ArrayList<Notebook> books = new ArrayList<>();
-	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	private static boolean debugMode = false;
 
 	public static void main(String[] args) {
