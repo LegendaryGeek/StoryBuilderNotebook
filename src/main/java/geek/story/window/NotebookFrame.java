@@ -187,14 +187,14 @@ public class NotebookFrame extends JFrame {
 	}
 
 	/**
-	 * @return the editior
+	 * @return the editor
 	 */
 	public EditiorPane getEditior() {
 		return editior;
 	}
 
 	/**
-	 * @param editior the editior to set
+	 * @param editior the editor to set
 	 */
 	public void setEditior(EditiorPane editior) {
 		this.editior = editior;
