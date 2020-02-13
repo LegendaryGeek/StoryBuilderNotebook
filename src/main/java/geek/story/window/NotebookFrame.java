@@ -47,6 +47,7 @@ public class NotebookFrame extends JFrame {
 	public ExitButton exitButton = new ExitButton();
 	public OptionsMenueButton optionsMenueButton = new OptionsMenueButton();
 	public NewBookButton newBookButton = new NewBookButton();
+	public MainMenueButton mainMenueButton = new MainMenueButton();
 
 	public NotebookFrame() {
 		this.setName(StoryBuilderNotebook.appName);
@@ -148,7 +149,7 @@ public class NotebookFrame extends JFrame {
 		});
 
 		optionsPanel.setBackground(Color.decode("#00137F"));
-		optionsPanel.add(new MainMenueButton());
+		optionsPanel.add(mainMenueButton);
 
 //		editiorPane.
 
