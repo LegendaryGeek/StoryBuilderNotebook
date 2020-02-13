@@ -2,8 +2,11 @@ package geek.story.window;
 
 import java.util.List;
 
+import javax.swing.JEditorPane;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.text.html.HTMLDocument;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,12 +20,16 @@ public class EditiorPane extends JTabbedPane {
 	Logger log = LogManager.getLogger(EditiorPane.class);
 	private Notebook book;
 	private List<GSCharacter> characters = book.getCharacters();
+	private JPanel testTextPane = new JPanel();
+	private JEditorPane editPane = new JEditorPane();
 	private JTextArea suchTexty = new JTextArea();
+	private HTMLDocument doc = new HTMLDocument();
 
 	private static final long serialVersionUID = 509467761740982125L;
 
 	public EditiorPane(Notebook book) {
 		this.book = book;
+		testTextPane.add(suchTexty);
 
 	}
 
