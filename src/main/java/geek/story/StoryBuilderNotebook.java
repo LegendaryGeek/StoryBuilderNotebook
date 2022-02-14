@@ -1,5 +1,18 @@
 package geek.story;
 
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+
+//import com.google.gson.Gson;
+//import com.google.gson.GsonBuilder;
+
+import geek.story.elements.GSCharacter;
+import geek.story.elements.Item;
+import geek.story.elements.Technology;
+import geek.story.elements.items.TechItem;
+import geek.story.elements.items.Weapon;
+import geek.story.file.FileUtilities;
+import geek.story.window.NotebookFrame;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Date;
@@ -9,38 +22,26 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import geek.story.elements.GSCharacter;
-import geek.story.elements.Item;
-import geek.story.elements.Technology;
-import geek.story.elements.items.TechItem;
-import geek.story.elements.items.Weapon;
-import geek.story.file.FileUtilities;
-import geek.story.window.NotebookFrame;
-
 /**
  * @author LegendaryGeek
  *
  */
 public class StoryBuilderNotebook {
 
-	static Logger log = LogManager.getLogger(StoryBuilderNotebook.class);
-	private static boolean running = true;
-	public static String appName = "Character Story Notebook";
-	public static final String SEPERATOR = "-------------------------";
-	private static NotebookFrame frame;
-	public static ArrayList<Notebook> books = new ArrayList<>();
-	static Gson gson = new GsonBuilder().setPrettyPrinting().create();
-	private static boolean debugMode = false;
-	private static Path appPath = Paths.get("C:\\LegendaryGeek\\CharacterStoryNotebook");
+  //static Logger log = LogManager.getLogger(StoryBuilderNotebook.class);
+  private static boolean running = true;
+  public static String appName = "Character Story Notebook";
+  public static final String SEPERATOR = "-------------------------";
+  private static NotebookFrame frame;
+  public static ArrayList<Notebook> books = new ArrayList<>();
+  //static Gson gson = new GsonBuilder().setPrettyPrinting().create();
+  private static boolean debugMode = false;
+  private static Path appPath = Paths.get(
+    "C:\\LegendaryGeek\\CharacterStoryNotebook"
+  );
 
-	public static void main(String[] args) {
-
+  public static void main(String[] args) {
+    /*
 		log.info("Month: {}", Calendar.getInstance().get(Calendar.MONTH));
 		log.info("Day of Month: {}", Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 		log.info("Day of Week: {}", Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
@@ -168,57 +169,56 @@ public class StoryBuilderNotebook {
 				log.catching(e);
 			}
 		}
+*/
+  }
 
-	}
+  /**
+   * @return if the program is or should be running
+   */
+  public static boolean isRunning() {
+    return running;
+  }
 
-	/**
-	 * @return if the program is or should be running
-	 */
-	public static boolean isRunning() {
-		return running;
-	}
+  /**
+   * @param running sets weather or not the program should be running
+   */
+  public static void setRunning(boolean running) {
+    StoryBuilderNotebook.running = running;
+    //log.info("Running set to: {}", running);
+  }
 
-	/**
-	 * @param running sets weather or not the program should be running
-	 */
-	public static void setRunning(boolean running) {
-		StoryBuilderNotebook.running = running;
-		log.info("Running set to: {}", running);
-	}
+  /**
+   * @return
+   */
+  public static NotebookFrame getFrame() {
+    return frame;
+  }
 
-	/**
-	 * @return
-	 */
-	public static NotebookFrame getFrame() {
-		return frame;
-	}
+  /**
+   * @return
+   */
+  public static boolean isDebugMode() {
+    return debugMode;
+  }
 
-	/**
-	 * @return
-	 */
-	public static boolean isDebugMode() {
-		return debugMode;
-	}
+  /**
+   * @param debugMode
+   */
+  public static void setDebugMode(boolean debugMode) {
+    StoryBuilderNotebook.debugMode = debugMode;
+  }
 
-	/**
-	 * @param debugMode
-	 */
-	public static void setDebugMode(boolean debugMode) {
-		StoryBuilderNotebook.debugMode = debugMode;
-	}
+  /**
+   * @return the appPath
+   */
+  public static Path getAppPath() {
+    return appPath;
+  }
 
-	/**
-	 * @return the appPath
-	 */
-	public static Path getAppPath() {
-		return appPath;
-	}
-
-	/**
-	 * @param appPath the appPath to set
-	 */
-	public static void setAppPath(Path appPath) {
-		StoryBuilderNotebook.appPath = appPath;
-	}
-
+  /**
+   * @param appPath the appPath to set
+   */
+  public static void setAppPath(Path appPath) {
+    StoryBuilderNotebook.appPath = appPath;
+  }
 }
